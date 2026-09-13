@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 0.9346218, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -154,6 +154,13 @@ MonoBehaviour:
   gateType: 0
   gateValue: 0
   typeValueText: {fileID: 8042533988417857981}
+  colors:
+  - {r: 1, g: 0, b: 0, a: 0}
+  - {r: 1, g: 0.90713394, b: 0, a: 0}
+  - {r: 0, g: 0.15586233, b: 1, a: 0}
+  - {r: 0.20064259, g: 1, b: 0, a: 0}
+  spriteRenderer: {fileID: 4986992627232428744}
+  gateMovementSpeed: 0
 --- !u!1 &7991114984538939110
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,8 +275,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

@@ -1,20 +1,37 @@
 using UnityEngine;
 using TMPro;
-using System.Linq.Expressions;
 
 
 public enum GateType { Add , Subtract , Multiply , Divide }
 public class Gate : MonoBehaviour
 {
 
+
     public GateType gateType;
     public int gateValue;
     public TextMeshPro typeValueText;
 
+    [Header("Gate Color")]
+    public Color[] colors;
+    private SpriteRenderer spriteRenderer;
+
+
+
+    [Header("Gate Speed")]
+    [SerializeField] private float gateMovementSpeed;
+
 
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         RandomizeGateType();
+        SetRandomColor();
+    }
+
+
+    void Update()
+    {
+        GateMovement();
     }
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -86,6 +103,22 @@ public class Gate : MonoBehaviour
             case GateType.Divide: symbol = "/"; break;
         }
         typeValueText.text = symbol + gateValue;
+    }
+
+    void GateMovement()
+    {
+        transform.Translate(0 , -gateMovementSpeed * Time.deltaTime , 0);
+        if(transform.position.y < -10)
+        Destroy(gameObject);
+        //buraya pooler a geri donmesini yazacagiz fakat simdilik destroy olarak kalsin.
+    }
+
+    void SetRandomColor()
+    {
+        Color c = colors[Random.Range(0 , colors.Length)];
+        c.a = 1f;
+        spriteRenderer.color = c;
+        
     }
 
 }
