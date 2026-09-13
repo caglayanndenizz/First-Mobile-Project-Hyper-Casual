@@ -8,18 +8,12 @@ public class Gate : MonoBehaviour
 {
 
     public GateType gateType;
-    public int gateValue = Random.Range(2, 6);
+    public int gateValue;
     public TextMeshPro typeValueText;
 
-    void OnValidate()
-    {
-        UpdateText();
-
-    }
 
     void Start()
     {
-        OnValidate();
         RandomizeGateType();
     }
     void OnTriggerEnter2D(Collider2D other)
@@ -49,7 +43,10 @@ public class Gate : MonoBehaviour
             p.squadCount = 0;
             Debug.Log("Game Over");
             Destroy(gameObject);
+
+            //bu kisim calismiyor. Sonucu bir degiskende toplayip sonra player a gondermemiz lazim!!!!!!!
         }
+
     }
 
 
