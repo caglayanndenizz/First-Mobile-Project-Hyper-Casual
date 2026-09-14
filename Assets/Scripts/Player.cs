@@ -1,12 +1,21 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+
+    //player clonelanmasi belki array izgarasi olusturularak cozulebilir.
+    //player in scale i yuzde 25 azaltilir , 10 adet nokta olusturulur belki de sirasiyla nerelerde olusturulacagini
+    // da ayarlayabiliriz. Bu sekilde playerin clone sayisi artar ve squadCount ile baglantili olur.
     public TextMeshPro squadCountText;
     public Rigidbody2D playerRb;
     public int squadCount = 10;
     public GameObject bulletPrefab;
+    public Transform bulletSpawnPoint;
+
+    [Header("Shooting")]
+    public float bulletSpawnInterval = 0.5f;
 
     [Header("Swipe Movement")]
     public float swipeSpeed;
@@ -15,7 +24,9 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+
         playerRb = GetComponent<Rigidbody2D>();
+        StartCoroutine(ShootInterval());
         UpdateSquadCountText();
     }
 
@@ -80,6 +91,20 @@ public class Player : MonoBehaviour
         if (squadCountText != null)
         {
             squadCountText.text = squadCount.ToString();
+        }
+    }
+
+    void BulletSpawn()
+    {
+        Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
+    }
+
+    IEnumerator ShootInterval()
+    {
+        while (true)
+        {
+            BulletSpawn();
+            yield return new WaitForSeconds(bulletSpawnInterval);
         }
     }
 

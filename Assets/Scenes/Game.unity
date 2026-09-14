@@ -119,6 +119,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &150155071
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 150155072}
+  m_Layer: 0
+  m_Name: BulletSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &150155072
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 150155071}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.068, y: 0.265, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1925549396}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &225736024
 GameObject:
   m_ObjectHideFlags: 0
@@ -819,8 +850,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Player
   squadCountText: {fileID: 575190428}
   playerRb: {fileID: 1925549393}
-  squadCount: 0
-  bulletPrefab: {fileID: 0}
+  squadCount: 1
+  bulletPrefab: {fileID: 2038710188556499607, guid: 30f0145c36b0a4c64b63a9f323cbecce, type: 3}
+  bulletSpawnPoint: {fileID: 150155072}
+  bulletSpawnInterval: 0.5
   swipeSpeed: 20
 --- !u!212 &1925549395
 SpriteRenderer:
@@ -894,6 +927,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 575190427}
+  - {fileID: 150155072}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &1925549397
@@ -937,7 +971,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
+  - {fileID: 309823255}
   - {fileID: 619394802}
   - {fileID: 1925549396}
   - {fileID: 844358012}
-  - {fileID: 309823255}
