@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9044428129049081372}
   m_Layer: 0
   m_Name: Gate
-  m_TagString: Untagged
+  m_TagString: Gate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -159,7 +159,6 @@ MonoBehaviour:
   - {r: 1, g: 0.90713394, b: 0, a: 0}
   - {r: 0, g: 0.15586233, b: 1, a: 0}
   - {r: 0.20064259, g: 1, b: 0, a: 0}
-  spriteRenderer: {fileID: 4986992627232428744}
   gateMovementSpeed: 0
 --- !u!1 &7991114984538939110
 GameObject:
