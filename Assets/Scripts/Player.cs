@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     public float bulletSpawnInterval = 0.5f;
     public GameObject bulletPrefab;
     public Transform bulletSpawnPoint;
+    public float baseBulletDamage = 10f;
     public float baseBulletScale = 1f;
     private float bulletScale;
 
@@ -84,11 +85,11 @@ public class Player : MonoBehaviour
         //belirledigimiz hizda playerin x pozisyonunu targete dogru gercek zamanli hareket ettir.
     }
 
-    // squadCount'u degistiren her sey buradan gecmeli.
+    
     public void SetSquad(int newCount)
     {
         squadCount = Mathf.Max(newCount, 0);
-        UpdateBulletScale();
+        UpdateBulletScale(); //squadcount a bakarak bulletscale kontrol ediliyor.
         UpdateSquadCountText();
 
         if (squadCount < 1) GameOver();
@@ -106,6 +107,8 @@ public class Player : MonoBehaviour
     {
         GameObject b = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
         b.transform.localScale = bulletPrefab.transform.localScale * bulletScale;
+        b.GetComponent<Bullet>().bulletDamage = Mathf.RoundToInt(baseBulletDamage * bulletScale);
+        
     }
 
     IEnumerator ShootInterval()
@@ -125,7 +128,7 @@ public class Player : MonoBehaviour
     }
 
 
-    void UpdateBulletScale()
+    public void UpdateBulletScale()
     {
         float multiplier;
         if(squadCount >= 50) multiplier = 2.0f;
