@@ -8,24 +8,36 @@ public class Player : MonoBehaviour
     //player clonelanmasi belki array izgarasi olusturularak cozulebilir.
     //player in scale i yuzde 25 azaltilir , 10 adet nokta olusturulur belki de sirasiyla nerelerde olusturulacagini
     // da ayarlayabiliriz. Bu sekilde playerin clone sayisi artar ve squadCount ile baglantili olur.
-    public TextMeshPro squadCountText;
+    
+    
+    
+    [Header("Player")]
     public Rigidbody2D playerRb;
     public int squadCount = 10;
+
+    [Header("Bullet")]
+    public float bulletSpawnInterval = 0.5f;
     public GameObject bulletPrefab;
     public Transform bulletSpawnPoint;
+    public float baseBulletScale = 1f;
+    private float bulletScale;
 
-    [Header("Shooting")]
-    public float bulletSpawnInterval = 0.5f;
+    
 
     [Header("Swipe Movement")]
     public float swipeSpeed;
     float target = -1.5f;
     Vector2 touchStartPos;
 
+    [Header("UI")]
+    public TextMeshPro squadCountText;
+
+    
     void Start()
     {
 
         playerRb = GetComponent<Rigidbody2D>();
+        UpdateBulletScale();
         StartCoroutine(ShootInterval());
         UpdateSquadCountText();
     }
@@ -47,11 +59,6 @@ public class Player : MonoBehaviour
             Gate gate = other.GetComponent<Gate>();
             gate.ChangeSquadCount(this);
         }
-    }
-
-    public void Shoot()
-    {
-        //bullet scriptine baglanti ve instantiate.
     }
 
     public void Movement()
@@ -81,6 +88,7 @@ public class Player : MonoBehaviour
     public void SetSquad(int newCount)
     {
         squadCount = Mathf.Max(newCount, 0);
+        UpdateBulletScale();
         UpdateSquadCountText();
 
         if (squadCount < 1) GameOver();
@@ -96,7 +104,8 @@ public class Player : MonoBehaviour
 
     void BulletSpawn()
     {
-        Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
+        GameObject b = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
+        b.transform.localScale = bulletPrefab.transform.localScale * bulletScale;
     }
 
     IEnumerator ShootInterval()
@@ -114,4 +123,19 @@ public class Player : MonoBehaviour
         Time.timeScale = 0f;
         // Burada game over paneli acilacak.
     }
+
+
+    void UpdateBulletScale()
+    {
+        float multiplier;
+        if(squadCount >= 50) multiplier = 2.0f;
+        else if(squadCount >= 25) multiplier = 1.5f;
+        else if(squadCount >= 10) multiplier = 1.3f;
+        else multiplier = 1.0f;
+
+        bulletScale = baseBulletScale * multiplier;
+    }
+
+
+
 }
