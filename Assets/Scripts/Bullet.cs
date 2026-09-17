@@ -4,6 +4,7 @@ public class Bullet : MonoBehaviour
 {
     public float bulletSpeed = 10f;
     public float bulletDamage = 10f;
+    public float bulletIncreasedDamage;
     public float lifetime = 4f;
     public float spawnInterval;
 
