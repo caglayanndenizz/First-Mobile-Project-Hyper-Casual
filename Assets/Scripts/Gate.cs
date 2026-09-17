@@ -47,10 +47,10 @@ public class Gate : MonoBehaviour
                 gateValue = Random.Range(2, 10);
                 break;
             case GateType.Multiply:
-                gateValue = Random.Range(2, 4);
+                gateValue = Random.Range(1, 3);
                 break;
             case GateType.Divide:
-                gateValue = Random.Range(2, 4);
+                gateValue = Random.Range(1, 3);
                 break;
         }
 
