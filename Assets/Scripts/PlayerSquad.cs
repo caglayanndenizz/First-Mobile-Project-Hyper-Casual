@@ -1,22 +1,33 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 public class PlayerSquad : MonoBehaviour
 {
 
-    [Header("Squad")]
+    [Header("References")]
     public GameObject clonePrefab;
     private PlayerShooting playerShooting;
     public GameManager gameManager;
-    public int squadCount = 1;
-    
 
+
+    [Header("Grid")]
     public int rows = 5;
     public int columns = 5;
     public float spacing;
     public Vector2 startPosition = new Vector2(-1.5f, 1f);
     Vector2[] positions;
     [HideInInspector] public GameObject[] clones;
+
+
+    [Header("Gate Settings")]
+    public float gateCooldown = 2f;
+    private bool isCooldownActive = false;
+
+
+
+    [Header("Squad Settings")]
+    public int squadCount = 1;
     void Awake()
     {
         playerShooting = GetComponent<PlayerShooting>();
@@ -26,16 +37,17 @@ public class PlayerSquad : MonoBehaviour
         UpdateSquadCountText();
 
     }
-     void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Gate"))
+        if (other.CompareTag("Gate") && !isCooldownActive)
         {
             Gate gate = other.GetComponent<Gate>();
             gate.ChangeSquadCount(this);
+            StartCoroutine(GateCooldown());
         }
     }
 
-    
+
     void CreateGrid() //sadece yumurta kolisi gorevinde.
     //yumurtalar farkli metodda yerlestirilcek.
     {
@@ -77,7 +89,7 @@ public class PlayerSquad : MonoBehaviour
         }
 
     }
-    
+
     void UpdateClones()
     {
         for (int i = 0; i < clones.Length; i++)
@@ -95,13 +107,20 @@ public class PlayerSquad : MonoBehaviour
 
         if (squadCount < 1) gameManager.GameOver();
     }
-
     public void UpdateSquadCountText()
     {
         if (gameManager.squadCountText != null)
         {
             gameManager.squadCountText.text = squadCount.ToString();
         }
+    }
+
+    IEnumerator GateCooldown()
+    {
+        isCooldownActive = false;
+        yield return new WaitForSeconds(gateCooldown);
+        isCooldownActive = true;
+        
     }
 
     
