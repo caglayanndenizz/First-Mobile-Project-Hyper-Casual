@@ -87,11 +87,11 @@ public class Gate : MonoBehaviour
         spriteRenderer.color = c;
     }
 
-    public void ChangeSquadCount(Player player)
+    public void ChangeSquadCount(PlayerSquad squad)
     {
-        if (player == null) return;
+        if (squad == null) return;
 
-        int result = player.squadCount;
+        int result = squad.squadCount;
 
         switch (gateType)
         {
@@ -101,6 +101,6 @@ public class Gate : MonoBehaviour
             case GateType.Divide:   result /= gateValue; break;
         }
 
-        player.SetSquad(result);
+        squad.SetSquad(result);
     }
 }

@@ -35,8 +35,8 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnEnemy()
     {
-        Transform transform = enemySpawnPoints[Random.Range(0, enemySpawnPoints.Length)];
-        Instantiate(enemyPrefab, transform.position, Quaternion.identity);
+        Transform spawnPoint = enemySpawnPoints[Random.Range(0, enemySpawnPoints.Length)];
+        Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
     }
 
     IEnumerator EnemySpawnRoutine()
