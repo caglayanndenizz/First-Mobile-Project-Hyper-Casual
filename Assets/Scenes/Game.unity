@@ -181,8 +181,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SpawnManager
   gatePrefab: {fileID: 4739245837206748975, guid: b20405d3fc26bc441a4fa5b96df9b30b, type: 3}
   enemyPrefab: {fileID: 1345621299727657012, guid: 16fdf1b88958840a88810140b70360c8, type: 3}
+  squad: {fileID: 1212062001}
+  enemy: {fileID: 1057494257145720453, guid: 16fdf1b88958840a88810140b70360c8, type: 3}
   enemySpawnInterval: 8
   gateSpawnInterval: 5
+  baseEnemyHealth: 50
+  healthPerSquad: 10
   enemySpawnPoints:
   - {fileID: 225736025}
   - {fileID: 321075485}
@@ -622,12 +626,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSquad
   clonePrefab: {fileID: 1531577874134790046, guid: 3e39e18f896db4a5c9a652906f5c61af, type: 3}
   gameManager: {fileID: 520391044}
-  squadCount: 1
   rows: 5
   columns: 5
   spacing: 1
   startPosition: {x: -1.5, y: 1}
   clones: []
+  gateCooldown: 2
+  squadCount: 1
 --- !u!114 &1212062002
 MonoBehaviour:
   m_ObjectHideFlags: 0

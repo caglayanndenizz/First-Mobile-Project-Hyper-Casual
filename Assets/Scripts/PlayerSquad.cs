@@ -117,9 +117,9 @@ public class PlayerSquad : MonoBehaviour
 
     IEnumerator GateCooldown()
     {
-        isCooldownActive = false;
-        yield return new WaitForSeconds(gateCooldown);
         isCooldownActive = true;
+        yield return new WaitForSeconds(gateCooldown);
+        isCooldownActive = false;
         
     }
 

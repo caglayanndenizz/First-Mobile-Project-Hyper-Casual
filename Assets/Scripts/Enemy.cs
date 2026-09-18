@@ -29,4 +29,10 @@ public class Enemy : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    public void SetHealth(float newHealth)
+    {
+        maxHealth = newHealth;
+        currentHealth = newHealth;
+    }
 }

@@ -38,24 +38,26 @@ public class Gate : MonoBehaviour
     {
         gateType = (GateType)Random.Range(0, 4);
 
+
         switch (gateType)
         {
             case GateType.Add:
-                gateValue = Random.Range(2, 10);
+                gateValue = Random.Range(2, 5);
                 break;
             case GateType.Subtract:
-                gateValue = Random.Range(2, 10);
+                gateValue = Random.Range(2, 5);
                 break;
             case GateType.Multiply:
-                gateValue = Random.Range(1, 3);
+                gateValue = Random.Range(2, 4);
                 break;
             case GateType.Divide:
-                gateValue = Random.Range(1, 3);
+                gateValue = Random.Range(2, 4);
                 break;
         }
 
         UpdateText();
     }
+
 
     public void UpdateText()
     {
