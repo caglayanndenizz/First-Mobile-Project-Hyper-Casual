@@ -5,14 +5,22 @@ public class Enemy : MonoBehaviour
     public float enemySpeed = 1.5f;
     public float currentHealth;
     public float maxHealth = 100f;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
 
+    public float threshold = -5f;
+    
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    protected virtual void Start()
+    {
+        
+    }
     protected virtual void Update()
     {
         Move();
+        ThresholdPass();
+        
     }
 
-     protected virtual void Die()
+    protected virtual void Die()
     {
         Destroy(gameObject);
     }
@@ -21,7 +29,7 @@ public class Enemy : MonoBehaviour
     {
         transform.Translate(Vector2.down * enemySpeed * Time.deltaTime);
 
-        if(transform.position.y < -10)
+        if (transform.position.y < -10)
         {
             Destroy(gameObject);
         }
@@ -40,6 +48,16 @@ public class Enemy : MonoBehaviour
     {
         maxHealth = newHealth;
         currentHealth = newHealth;
+    }
+    
+    public void ThresholdPass()
+    {
+
+        if (gameObject.transform.position.y <= threshold - 1)
+        {
+            Time.timeScale = 0f;
+            Debug.Log("The enemy has crossed the threshold! Game Over");
+        }
     }
 
    

@@ -29,8 +29,8 @@ public class PlayerShooting : MonoBehaviour
 
     void Shoot(Vector3 position)
     {
-        GameObject b = Instantiate(bulletPrefab, position, Quaternion.identity);
-        b.transform.localScale = bulletPrefab.transform.localScale * bulletScale;
+        GameObject b = BulletPool.instance.SpawnBullet(position);
+        b.transform.localScale = BulletPool.instance.bulletPrefab.transform.localScale * bulletScale;
         b.GetComponent<Bullet>().bulletDamage = Mathf.RoundToInt(baseBulletDamage * bulletScale);
     }
 

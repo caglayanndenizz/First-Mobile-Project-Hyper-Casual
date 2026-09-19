@@ -21,6 +21,11 @@ public class Projectile : MonoBehaviour
         {
             Destroy();
         }
+
+        if(collision.CompareTag("Bullet"))
+        {
+            Destroy();
+        }
     }
     
     void Destroy()
