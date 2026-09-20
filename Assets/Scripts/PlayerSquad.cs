@@ -27,7 +27,7 @@ public class PlayerSquad : MonoBehaviour
 
 
     [Header("Squad Settings")]
-    public int squadCount = 1;
+    public int squadCount = 10;
     void Awake()
     {
         playerShooting = GetComponent<PlayerShooting>();

@@ -42,6 +42,9 @@ GameObject:
   - component: {fileID: 1174148130138649417}
   - component: {fileID: 7418875018456519265}
   - component: {fileID: 8634151500544974467}
+  - component: {fileID: 2593436450350914525}
+  - component: {fileID: 775329516448944923}
+  - component: {fileID: 1551081996809622533}
   - component: {fileID: 668068561863975490}
   - component: {fileID: 2443857879072495346}
   m_Layer: 0
@@ -138,15 +141,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa9ee0c4062ed4b9088d65e2e6611370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  playerRb: {fileID: 668068561863975490}
-  squadCount: 1
+  squadCountText: {fileID: 1923093513630568816}
+--- !u!114 &2593436450350914525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3699398924777450598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0ecc65d99c314b4fa3edf65c52b8a1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  swipeSpeed: 30
+--- !u!114 &775329516448944923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3699398924777450598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01f746a8b463c43f196450096dea68d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerShooting
   bulletSpawnInterval: 0.5
   bulletPrefab: {fileID: 2038710188556499607, guid: 30f0145c36b0a4c64b63a9f323cbecce, type: 3}
   bulletSpawnPoint: {fileID: 4508018274107765068}
   baseBulletDamage: 10
   baseBulletScale: 1
-  swipeSpeed: 20
-  squadCountText: {fileID: 1923093513630568816}
+--- !u!114 &1551081996809622533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3699398924777450598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a768917055fe40b1a8a2dc58665e2f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSquad
+  clonePrefab: {fileID: 1531577874134790046, guid: 3e39e18f896db4a5c9a652906f5c61af, type: 3}
+  gameManager: {fileID: 0}
+  rows: 5
+  columns: 5
+  spacing: 1
+  startPosition: {x: -1.5, y: 1}
+  clones: []
+  gateCooldown: 2
+  squadCount: 10
 --- !u!50 &668068561863975490
 Rigidbody2D:
   serializedVersion: 5
@@ -244,8 +290,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.02, y: 0.03}
-  m_SizeDelta: {x: 1.4577, y: 0.6873}
+  m_AnchoredPosition: {x: 0.03, y: 0.06}
+  m_SizeDelta: {x: 2.3, y: 1.261}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &5965609664526228504
 MeshRenderer:

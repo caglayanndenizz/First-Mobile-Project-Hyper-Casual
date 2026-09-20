@@ -8,15 +8,11 @@ public class Enemy : MonoBehaviour
     public float maxHealth = 100f;
 
     //public float threshold = -5f;
-    public GameObject threshold;
+    private GameObject threshold;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected virtual void Start()
     {
-        if (threshold == null)
-        {
-            threshold = GameObject.FindGameObjectWithTag("Threshold");
-        }
-
+        threshold = GameObject.FindGameObjectWithTag("Threshold");
     }
     protected virtual void Update()
     {
