@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -6,12 +7,16 @@ public class Enemy : MonoBehaviour
     public float currentHealth;
     public float maxHealth = 100f;
 
-    public float threshold = -5f;
-    
+    //public float threshold = -5f;
+    public GameObject threshold;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected virtual void Start()
     {
-        
+        if (threshold == null)
+        {
+            threshold = GameObject.FindGameObjectWithTag("Threshold");
+        }
+
     }
     protected virtual void Update()
     {
@@ -53,7 +58,7 @@ public class Enemy : MonoBehaviour
     public void ThresholdPass()
     {
 
-        if (gameObject.transform.position.y <= threshold - 1)
+        if (gameObject.transform.position.y <= threshold.transform.position.y - 1)
         {
             Time.timeScale = 0f;
             Debug.Log("The enemy has crossed the threshold! Game Over");
